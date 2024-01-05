@@ -29,6 +29,8 @@ const LoginForm = () => {
                 setMessage(responseData.error)
             } else{
                 router.push('/home/index')
+                setMessage("Success")
+
             }
 
             // console.log(responseData);
