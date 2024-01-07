@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -15,6 +18,26 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
 
+  color: rgb(var(--foreground-rgb));
+}
+
+.input-container {
+  @apply flex justify-between gap-2 flex-col;
+}
+
+.input-border{
+  @apply border-b-2 border-gray-400 outline-none opacity-50
+}
+
+.form-fontSize {
+  @apply text-sm md:text-lg;
+}
+
+.font-Merriweather {
+  font-family: 'Merriweather', serif;
+}
+
+.btn-login{
+  @apply cursor-pointer bg-slate-400 hover:bg-slate-500 text-white p-2 rounded-lg w-full font-Merriweather text-sm sm:text-base transition ease-in-out delay-150
 }

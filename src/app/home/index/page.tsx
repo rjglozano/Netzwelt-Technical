@@ -1,5 +1,4 @@
 'use client'
-
 import HomePage from "../../../../components/HomePage"
 
 const page = () => {
@@ -9,6 +8,8 @@ const page = () => {
     </div>
   )
 }
+
+
 
 
 

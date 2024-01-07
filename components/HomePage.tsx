@@ -1,4 +1,8 @@
+'client'
+
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from './AuthContext';
 
 interface YourDataType {
   id: string;
@@ -6,9 +10,13 @@ interface YourDataType {
   parent: string | null;
 }
 
-const YourComponent: React.FC = () => {
+const HomePage: React.FC = () => {
   const [data, setData] = useState<YourDataType[] | null>(null);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const {isAuthenticated } = useAuth();
+  console.log(isAuthenticated)
+
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +31,13 @@ const YourComponent: React.FC = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/account/login');
+    }
+  }, [isAuthenticated, router]);
+
 
   const toggleItem = (itemId: string) => {
     setExpandedItems((prevItems) =>
@@ -82,4 +97,4 @@ const YourComponent: React.FC = () => {
   );
 };
 
-export default YourComponent;
+export default HomePage;

@@ -13,17 +13,17 @@
                 body: JSON.stringify(body),
             });
 
+            const userData = await usersResponse.json();
+        
             if (usersResponse.ok) {
-
-                const userData = await usersResponse.json();
                 const sessionId = Math.random().toString(36).substring(7);
                 sessions.set(sessionId, { userData });
-                console.log(sessionId)
-
+        
                 return NextResponse.json({
                     status: 200,
                     body: JSON.stringify({ success: true, sessionId }),
                 });
+                
         
             } else {
                 return NextResponse.json({
@@ -31,7 +31,6 @@
                     error: "Invalid username and password"           
                 });
             }
-
         } catch (err) {
             console.error(err);
             return NextResponse.json({
