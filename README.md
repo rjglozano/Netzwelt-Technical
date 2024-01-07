@@ -8,3 +8,15 @@ Welcome to the Netzwelt Technical repository! This repository contains the sourc
 
 ```bash
 git clone https://github.com/rjglozano/Netzwelt-Technical.git
+
+### Step 2: Install dependencies
+
+```bash
+npm i or npm install
+
+### Step 3: Run the code
+
+```bash
+npm run dev
+
+
