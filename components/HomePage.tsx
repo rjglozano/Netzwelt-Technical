@@ -3,6 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from './AuthContext';
+import { IoIosArrowDropdown, IoIosArrowDropright  } from "react-icons/io";
+
+
+
 
 interface YourDataType {
   id: string;
@@ -53,12 +57,13 @@ const HomePage: React.FC = () => {
 
   const renderTerritories = (parentId: string | null, level: number = 0) => {
     return (
-      <ul>
+      <ul className='text-white'>
         {data
           ?.filter((item) => item.parent === parentId)
           .map((item: YourDataType) => (
             <li key={item.id}>
               <div
+                className='flex items-center'
                 style={{
                   marginLeft: `${level * 20}px`,
                   cursor: hasChildren(item.id) ? 'pointer' : 'default',
@@ -67,7 +72,7 @@ const HomePage: React.FC = () => {
               >
                 {hasChildren(item.id) && (
                   <span>
-                    {expandedItems.includes(item.id) ? '[-]' : '[+]'}
+                    {expandedItems.includes(item.id) ? <IoIosArrowDropright className='text-red-300' size={30} /> : <IoIosArrowDropdown className='text-green-300'  size={30} />}
                   </span>
                 )}
                 {item.name}
@@ -84,14 +89,15 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Your Component</h1>
+    <div className='w-full min-h-screen bg-gradient-to-b from-slate-500 to-indigo-500 flex flex-col items-center py-10 font-Merriweather gap-2 sm:gap-4'>
+      <h1 className='text-3xl sm:text-6xl text-white'>Territories </h1>
+      <p className='text-white text-xl sm:text-2xl'>Here are the list of territories</p>
       {data ? (
-        <div>
+        <div >
           {renderTerritories(null)}
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className='text-white'>Loading...</p>
       )}
     </div>
   );
