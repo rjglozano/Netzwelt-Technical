@@ -11,6 +11,9 @@ const page = () => {
   )
 }
 
+export const runtime = 'edge';
+
+
 
 
 
